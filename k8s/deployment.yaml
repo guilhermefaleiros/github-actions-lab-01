@@ -13,7 +13,7 @@ spec:
     spec:
       containers:
         - name: web
-          image: guilhermefaleiros/gh-actions-pipeline
+          image: guilhermefaleiros/github-actions-lab
           ports:
             - containerPort: 5000
 ---
