@@ -1,4 +1,4 @@
-FROM golang:1.22.0-alpine3.19 as builder
+FROM golang:1.22.1-alpine as builder
 WORKDIR /build
 COPY . .
 RUN CGO_ENABLED=0 GOOS=linux go build -a -o app ./cmd/
@@ -10,3 +10,4 @@ WORKDIR /app
 COPY --from=builder --chown=appuser:appuser /build/app .
 EXPOSE 5000
 CMD [ "./app" ]
+
