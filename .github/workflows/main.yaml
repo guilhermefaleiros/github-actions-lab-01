@@ -1,0 +1,6 @@
+name: first-pipeline
+on:
+  push:
+    branches: [ "main" ]
+  workflow_dispatch:
+jobs:
