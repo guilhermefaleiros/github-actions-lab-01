@@ -23,3 +23,15 @@ jobs:
           tags: |
             guilhermefaleiros/github-actions-lab:${{ github.run_number }}
             guilhermefaleiros/github-actions-lab:latest
+  CD:
+    runs-on: ubuntu-latest
+    needs: CI
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Connect to Kubernetes
+        uses: azure/k8s-set-context@v4
+        with:
+          method: kubeconfig
+          kubeconfig: ${{ secrets.KUBE_CONFIG }}
+          context: do-nyc1-k8s-lab
