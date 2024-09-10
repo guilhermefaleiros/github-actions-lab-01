@@ -35,3 +35,10 @@ jobs:
           method: kubeconfig
           kubeconfig: ${{ secrets.KUBE_CONFIG }}
           context: do-nyc1-k8s-lab
+      - name: Deploy to Kubernetes
+        uses: Azure/k8s-deploy@v5
+        with:
+          manifests: |
+            ./k8s/deployment.yaml
+          images: |
+            guilhermefaleiros/github-actions-lab:${{ github.run_number }}
